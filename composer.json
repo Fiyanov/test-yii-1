@@ -1,0 +1,6 @@
+{
+    "require": {
+        "yiisoft/yii": "1.1.19",
+        "twbs/bootstrap": "3.0"
+    }
+}
