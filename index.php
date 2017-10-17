@@ -9,3 +9,21 @@ $config=dirname(__FILE__).'/config/main.php';
 
 require_once($yii);
 Yii::createWebApplication($config)->run();
+
+Yii::app()->clientScript->registerCssFile(
+    Yii::app()->assetManager->publish(
+        Yii::getPathOfAlias('application.vendor.twbs.bootstrap.dist.css').'/bootstrap.css'
+    )
+);
+
+Yii::app()->clientScript->registerCssFile(
+    Yii::app()->assetManager->publish(
+        Yii::getPathOfAlias('application.vendor.twbs.bootstrap.dist.css').'/bootstrap-theme.css'
+    )
+);
+
+Yii::app()->clientScript->registerCssFile(
+    Yii::app()->assetManager->publish(
+        Yii::getPathOfAlias('application.css').'/main.css'
+    )
+);

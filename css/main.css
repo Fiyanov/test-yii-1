@@ -1,0 +1,27 @@
+.header {
+    padding: 10px;
+    background-color: rgb(41, 143, 168); 
+    color: #fff;
+}
+
+.footer {
+    padding: 10px;
+    background-color: rgb(15, 79, 94); 
+    color: rgb(190, 247, 255);
+}
+
+.message {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;    
+}
+
+.message.warning {
+    border:1px solid #f99; 
+    background-color:#FAA;    
+}
+
+.message.done {
+    border:1px solid rgb(117, 151, 62); 
+    background-color:rgb(197, 255, 104);
+}

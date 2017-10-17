@@ -18,7 +18,7 @@ return array(
 		'application.components.*',
 	),
 
-	'defaultController'=>'post',
+	'defaultController'=>'site',
 
 	// application components
 	'components'=>array(
@@ -27,8 +27,7 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=test_yii1_leads',
-			//'tablePrefix' => 'tbl_',
+			'connectionString' => 'mysql:host=localhost;dbname=test_yii1_leads'
 		),
 		// uncomment the following to use a MySQL database
 		/*
@@ -48,6 +47,7 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
+				'vendor/.*?' => 'vendor/.*?',
 				'post/<id:\d+>/<title:.*?>'=>'post/view',
 				'posts/<tag:.*?>'=>'post/index',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
