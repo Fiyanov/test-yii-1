@@ -15,7 +15,9 @@ return array(
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
+		'application.models.forms.*',
 		'application.components.*',
+		'application.services.*',
 	),
 
 	'defaultController'=>'site',
@@ -47,9 +49,7 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
-				'vendor/.*?' => 'vendor/.*?',
-				'post/<id:\d+>/<title:.*?>'=>'post/view',
-				'posts/<tag:.*?>'=>'post/index',
+				'site/reg/<link:.*?>'=>'site/reg',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),

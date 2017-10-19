@@ -36,14 +36,17 @@
   </head>
   <body>
     <div class="header">
-        <h1>Тестовое задание</h1>
+        <a class="logo" href="/">
+            <h1>leads.su</h1>
+            <h4>Тестовое задание</h4>
+        </a>
     </div>
 
     <div class="wrap">
         <?=$content?>
     </div>
     
-    <div class="footer text-center">
+    <div class="footer text-center navbar-fixed-bottom">
         <h4>(c) IF 2017</h4>
     </div>
     

@@ -1,3 +1,8 @@
+.logo {
+    color: #fff;
+    text-decoration: none;
+}
+
 .header {
     padding: 10px;
     background-color: rgb(41, 143, 168); 
@@ -11,17 +16,20 @@
 }
 
 .message {
+    margin: 10px;
     padding: 10px;
     text-align: center;
     font-size: 14px;    
 }
 
 .message.warning {
-    border:1px solid #f99; 
-    background-color:#FAA;    
+    border:1px solid #a3433f; 
+    background-color:#FAA;
+    color: #7c0000;
 }
 
 .message.done {
     border:1px solid rgb(117, 151, 62); 
     background-color:rgb(197, 255, 104);
+    color: #1c2b0f;
 }
