@@ -14,7 +14,14 @@ class SiteController extends CController
 
 	public function actionReg($link)
 	{
-		$this->render('reg', ['link' => (new RequestService())->reg($link)]);
+		(new RequestService())->reg($link);
+
+		$this->render('reg');
+	}
+
+	public function actionCabinet()
+	{
+		$this->render('cabinet', ['cab' => Yii::app()->user->isGuest]);
 	}
 
     /**

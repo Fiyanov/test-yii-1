@@ -14,6 +14,7 @@ return array(
 
 	// autoloading model and component classes
 	'import'=>array(
+		'application.auth.*',
 		'application.models.*',
 		'application.models.forms.*',
 		'application.components.*',
@@ -22,6 +23,16 @@ return array(
 
 	'defaultController'=>'site',
 
+	'modules'=>array(
+			'gii'=>array(
+					'class'=>'system.gii.GiiModule',
+					'password'=>false,
+				// 'ipFilters'=>array(…список IP…),
+				// 'newFileMode'=>0666,
+				// 'newDirMode'=>0777,
+			),
+	),
+
 	// application components
 	'components'=>array(
 		'user'=>array(
@@ -29,7 +40,9 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=test_yii1_leads'
+			'connectionString' => 'mysql:host=localhost;dbname=test_yii1_leads',
+			'username' => 'root',
+			'password' => ''
 		),
 		// uncomment the following to use a MySQL database
 		/*
@@ -49,6 +62,11 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
+				//gii
+				'gii'=>'gii',
+				'gii/<controller:\w+>'=>'gii/<controller>',
+				'gii/<controller:\w+>/<action:\w+>'=>'gii/<controller>/<action>',
+					//site
 				'site/reg/<link:.*?>'=>'site/reg',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),

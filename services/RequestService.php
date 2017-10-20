@@ -8,6 +8,9 @@
  */
 class RequestService
 {
+    const DEFAULT_USER_BALANCE = 1000;
+    const STATUS_ACTIVATED = 1;
+
     public function request()
     {
         $model = new Request();
@@ -22,23 +25,60 @@ class RequestService
 
     public function reg($link)
     {
-        return $link;
+        $user = Users::model()->findByLink($link);
+
+        if ($user) {
+
+            if ($user->status == 0) {
+                $user->api_key = $this->key($user->email);
+                $user->balance = self::DEFAULT_USER_BALANCE;
+                $user->status = self::STATUS_ACTIVATED;
+                $user->save();
+            }
+
+            //TODO: auth by link
+            $auth = new linkAuth($user);
+
+            Yii::app()->user->login($auth);
+            Yii::app()->request->redirect('/site/cabinet');
+
+            return true;
+        }
+
+        return false;
     }
 
     private function process($email)
     {
-        $link = $this->generate($email);
+        $link = $this->link($email);
         $this->send($link);
-        Yii::app()->request->redirect('site/send');
+        $user = new Users();
+
+        $user->email = $email;
+        $user->link = $link;
+        $user->save();
+
+        Yii::app()->request->redirect('/site/send');
     }
 
-    private function generate($email)
+    private function link($email)
     {
-        return 'http://' . $_SERVER['HTTP_HOST'] . '/site/reg/' . sha1('email' . $email);
+        return sha1('email' . $email);
+    }
+
+    private function uri($link)
+    {
+        return 'http://' . $_SERVER['HTTP_HOST'] . '/site/reg/' . $link;
+    }
+
+    private function key($email)
+    {
+        return sha1('key' . $email);
     }
 
     private function send($link)
     {
+        $link = $this->uri($link);
         return mail("test@leads.su", "link", "Для регистрации пройдите по ссылке: $link");
     }
 }

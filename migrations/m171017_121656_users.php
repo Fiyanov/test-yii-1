@@ -8,7 +8,9 @@ class m171017_121656_users extends CDbMigration
             'id' => 'pk',
             'email' => 'string NOT NULL',
             'password' => 'text',
-            'link' => 'text',
+			'balance' => 'integer',
+			'api_key' => 'string NOT NULL',
+            'link' => 'string NOT NULL',
             'status' => 'integer',
         ));
 	}

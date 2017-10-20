@@ -7,6 +7,6 @@
  */
 ?>
 
-<div class="message done">
-    <?=$link?>
+<div class="message warning">
+    Ссылка недействительна!
 </div>
