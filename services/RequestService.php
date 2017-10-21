@@ -36,10 +36,12 @@ class RequestService
                 $user->save();
             }
 
-            //TODO: auth by link
-            $auth = new linkAuth($user);
+            $auth = new linkAuth($link);
 
-            Yii::app()->user->login($auth);
+            if ($auth->authenticate()) {
+                Yii::app()->user->login($auth);
+            }
+
             Yii::app()->request->redirect('/site/cabinet');
 
             return true;
