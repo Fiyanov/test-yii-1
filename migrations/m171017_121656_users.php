@@ -7,6 +7,7 @@ class m171017_121656_users extends CDbMigration
 		$this->createTable('users', array(
             'id' => 'pk',
             'email' => 'string NOT NULL',
+            'name' => 'string NOT NULL',
             'password' => 'text',
 			'balance' => 'integer',
 			'api_key' => 'string NOT NULL',

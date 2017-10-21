@@ -46,7 +46,7 @@
         <?=$content?>
     </div>
     
-    <div class="footer text-center navbar-fixed-bottom">
+    <div class="footer text-center ">
         <h4>(c) IF 2017</h4>
     </div>
     

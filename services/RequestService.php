@@ -50,6 +50,12 @@ class RequestService
         return false;
     }
 
+    public function currentUserKey()
+    {
+        $user = Users::model()->find(Yii::app()->user->id);
+        return Yii::app()->user->isGuest ? '' : $user->api_key;
+    }
+
     private function process($email)
     {
         $link = $this->link($email);
@@ -58,6 +64,7 @@ class RequestService
 
         $user->email = $email;
         $user->link = $link;
+        $user->name = (new CabinetService())->parseNameFromEmail($email);
         $user->save();
 
         Yii::app()->request->redirect('/site/send');

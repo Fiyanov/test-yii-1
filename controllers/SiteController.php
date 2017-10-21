@@ -21,7 +21,11 @@ class SiteController extends CController
 
 	public function actionCabinet()
 	{
-		$this->render('cabinet', ['cab' => Yii::app()->user->isGuest]);
+		$this->render('cabinet', [
+			'model' => (new CabinetService())->process(),
+			'key' => (new RequestService())->currentUserKey(),
+			'balance'
+		]);
 	}
 
     /**

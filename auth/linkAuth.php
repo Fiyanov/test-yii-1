@@ -9,15 +9,23 @@
 class linkAuth extends CUserIdentity
 {
     private $id;
+    private $link;
 
-    public function __construct($user)
+    public function __construct($link)
     {
-        $this->id = $user->id;
+        $this->link = $link;
     }
 
     public function authenticate()
     {
-        return true;
+        $user = Users::model()->findByLink($this->link);
+
+        if ($user) {
+            $this->id = $user->id;
+            return true;
+        }
+
+        return false;
     }
 
     public function getId()
