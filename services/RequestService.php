@@ -59,7 +59,7 @@ class RequestService
     private function process($email)
     {
         $link = $this->link($email);
-        $this->send($link);
+        $this->send($email);
         $user = new Users();
 
         $user->email = $email;
@@ -85,9 +85,9 @@ class RequestService
         return sha1('key' . $email);
     }
 
-    private function send($link)
+    private function send($email)
     {
-        $link = $this->uri($link);
-        return mail("test@leads.su", "link", "Для регистрации пройдите по ссылке: $link");
+        $link = $this->uri($this->link($email));
+        return mail($email, "link", "Для регистрации пройдите по ссылке: $link");
     }
 }
